@@ -1,5 +1,5 @@
 # Enhanced Contrastive Learning with Multi-view Longitudinal Data for Chest X-ray Report Generation
-[arXiv](https://arxiv.org/abs/2502.20056)
+[![arXiv](https://img.shields.io/badge/arXiv-2502.20056-b31b1b.svg)](https://arxiv.org/abs/2502.20056)
 
 # News
 -  **2025-03-01** upload the code, the [generated reports](scripts/results/mimic_cxr/test/ft_100_top1/) for the MIMIC-CXR test set.
