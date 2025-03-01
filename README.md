@@ -2,7 +2,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2502.20056-b31b1b.svg)](https://arxiv.org/abs/2502.20056)
 
 # News
--  **2025-03-01** upload the code, the [generated radiology reports](generated-radiology-reports) for the MIMIC-CXR, MIMIC-ABN, and Two-view CXR datasets.
+-  **2025-03-01** Upload the code, checkpoints, and the [generated radiology reports](generated-radiology-reports) for the MIMIC-CXR, MIMIC-ABN, and Two-view CXR datasets. Notably, in the **generated-radiology-reports**, the **labels** column corresponds to **reference reports**, while the **report** column represents **generated reports**.
 
 ## Requirements
 
@@ -34,71 +34,12 @@ files/
 ├── p19
 └── NLMCXR_png
 ```
-- The radiology reports for MIMIC-CXR, MIMIC-ABN, and Two-view CXR are available on [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), [NIH](https://openi.nlm.nih.gov/faq#collection), and [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR), respectively. To streamline usage, we have structured multi-view longitudinal data by the `study_id`. The processed data can be accessed on [huggingface 🤗](https://huggingface.co/MK-runner/MLRG) (PhysioNet authorization required).
+- The radiology reports for MIMIC-CXR, MIMIC-ABN, and Two-view CXR are available on [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), [NIH](https://openi.nlm.nih.gov/faq#collection), and [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR), respectively. To streamline usage, we have structured multi-view longitudinal data using the `study_id`. The processed data can be accessed on [huggingface 🤗](https://huggingface.co/MK-runner/MLRG) (PhysioNet authorization required).
 
-## Reproducibility on MIMIC-CXR
-
-### Structural entities extraction (SEE) approach
-
-1. Config RadGraph environment based on `knowledge_encoder/factual_serialization.py`
+## Evaluation using generated radiology reports
 
 
-   ===================environmental setting=================
-   
-    Basic Setup (One-time activity)
-
-   a. Clone the DYGIE++ repository from [here](https://github.com/dwadden/dygiepp). This repository is managed by Wadden et al., authors of the paper [Entity, Relation, and Event Extraction with Contextualized Span Representations](https://www.aclweb.org/anthology/D19-1585.pdf).
-    ```bash
-   git clone https://github.com/dwadden/dygiepp.git
-    ```
-    
-   b. Navigate to the root of repo in your system and use the following commands to set the conda environment:
-    ```bash
-   conda create --name dygiepp python=3.7
-   conda activate dygiepp
-   cd dygiepp
-   pip install -r requirements.txt
-   conda develop .   # Adds DyGIE to your PYTHONPATH
-   ```
-
-   c. Activate the conda environment:
-    
-    ```bash
-   conda activate dygiepp
-    ```
-    Notably, for our RadGraph environment, you can refer to `knowledge_encoder/radgraph_requirements.yml`.
-   
-2. Config `radgraph_path` and `ann_path` in `knowledge_encoder/see.py`. `annotation.json`, can be obtained from [here](https://drive.google.com/file/d/1DS6NYirOXQf8qYieSVMvqNwuOlgAbM_E/view?usp=sharing). Note that you can apply with your license of [PhysioNet](https://physionet.org/content/mimic-cxr-jpg/2.0.0/).
-
-3. Run the `knowledge_encoder/see.py` to extract factual entity sequence for each report.
-   
-4. Finally, the `annotation.json` becomes `mimic_cxr_annotation_sen.json` that is identical to `new_ann_file_name` variable in `see.py`
-
-
-### Conducting the first stage (i.e., training cross-modal alignment module)
-
-1. Run `bash pretrain_mimic_cxr.sh` to pretrain a model on the MIMIC-CXR data (Note that the `mimic_cxr_ann_path` is `mimic_cxr_annotation_sen.json`).
-
-### Similar historical cases retrieval for each sample
-
-1. Config `--load` argument in `pretrain_inference_mimic_cxr.sh`. Note that the argument is the pre-trained model from the first stage.
-
-2. Run `bash pretrain_inference_mimic_cxr.sh` to retrieve similar historical cases for each sample, forming `mimic_cxr_annotation_sen_best_reports_keywords_20.json` (i.e., the `mimic_cxr_annotation_sen.json` becomes this `*.json` file).
-
-### Conducting the second stage (i.e., training report generation module)
-
-
-1. Extract and preprocess the `indication section` in the radiology report.
-
-   a. Config `ann_path` and `report_dir` in `knowledge_encoder/preprocessing_indication_section.py`, and its value is `mimic_cxr_annotation_sen_best_reports_keywords_20.json`. 
-      Note that `report_dir` can be downloaded from [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/).
-   
-   b. Run `knowledge_encoder/preprocessing_indication_section.py`, forming `mimic_cxr_annotation_sen_best_reports_keywords_20_all_components_with_fs_v0227.json`
-
-
-2. Config `--load` argument in `finetune_mimic_cxr.sh`. Note that the argument is the pre-trained model from the first stage. Furthermore, `mimic_cxr_ann_path` is `mimic_cxr_annotation_sen_best_reports_keywords_20_all_components_with_fs_v0227.json`
-
-3. Download these checkpoints. Notably, the `chexbert.pth` and `radgraph` are used to calculate CE metrics, and `bert-base-uncased` and `scibert_scivocab_uncased ` are pre-trained models for cross-modal fusion network and text encoder. Then put these checkpoints in the same local dir (e.g., "/home/data/checkpoints"), and configure the `--ckpt_zoo_dir /home/data/checkpoints` argument in `finetune_mimic_cxr.sh`
+3. Download checkpoints below. Notably, the `chexbert.pth`, `radgraph`, and `bert-base-uncased` are used to calculate CE metrics, and `bert-base-uncased` and `scibert_scivocab_uncased ` are pre-trained models for cross-modal fusion network and text encoder. Then put these checkpoints in the same local dir (e.g., "/home/data/checkpoints"), and configure the `--ckpt_zoo_dir /home/data/checkpoints` argument in `script/**/**.sh`
 
 <div style="margin: 0 auto; width: fit-content;">
       
@@ -111,63 +52,31 @@ files/
 
 </div>
 
-4. Run `bash finetune_mimic_cxr.sh` to generate reports based on similar historical cases.
-
-
-### Test 
-
-1. You must download the medical images, their corresponding reports (i.e., `mimic_cxr_annotation_sen_best_reports_keywords_20_all_components_with_fs_v0227.json`),  and checkpoints (i.e., `SEI-1-finetune-model-best.pth`) in Section Datasets and Section Checkpoints, respectively.
-
-2. Config `--load` and `--mimic_cxr_ann_path`arguments in `test_mimic_cxr.sh`
-
-3. Run `bash test_mimic_cxr.sh` to generate reports based on similar historical cases.
-
-4. Results on MIMIC-CXR are presented as follows:
-
-<div align=center><img src="results/sei_on_mimic_cxr.jpg"></div>
-
-
-5. Next, the code for this project will be streamlined.
-
-
-# Experiments
-## Main Results
-<div align=center><img src="results/main_results.jpg"></div>
-
-## Ablation Study
-<div align=center><img src="results/ablation_study.jpg"></div>
-<div align=center><img src="results/fig2.jpg"></div>
-
 
 ## Citations
 
-If you use or extend our work, please cite our paper at MICCAI 2024.
+If you use or extend our work, please cite our paper at CVPR 2025.
 
 ```
-@InProceedings{liu-sei-miccai-2024,
-      author={Liu, Kang and Ma, Zhuoqi and Kang, Xiaolu and Zhong, Zhusi and Jiao, Zhicheng and Baird, Grayson and Bai, Harrison and Miao, Qiguang},
-      title={Structural Entities Extraction and Patient Indications Incorporation for Chest X-Ray Report Generation},
-      booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
-      year={2024},
-      publisher={Springer Nature Switzerland},
-      address={Cham},
-      pages={433--443},
-      isbn={978-3-031-72384-1},
-      doi={10.1007/978-3-031-72384-1_41}
+@misc{liu2025enhancedcontrastivelearningmultiview,
+      title={Enhanced Contrastive Learning with Multi-view Longitudinal Data for Chest X-ray Report Generation}, 
+      author={Kang Liu and Zhuoqi Ma and Xiaolu Kang and Yunan Li and Kun Xie and Zhicheng Jiao and Qiguang Miao},
+      year={2025},
+      eprint={2502.20056},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2502.20056}, 
 }
-
 ```
 
 
 ## Acknowledgement
 
-- [R2Gen](https://github.com/zhjohnchan/R2Gen) Some codes are adapted based on R2Gen.
-- [R2GenCMN](https://github.com/zhjohnchan/R2GenCMN) Some codes are adapted based on R2GenCMN.
-- [MGCA](https://github.com/HKU-MedAI/MGCA) Some codes are adapted based on MGCA.
+- [cvt2distilgpt2](https://github.com/aehrc/cvt2distilgpt2) Some codes are adapted based on R2Gen.
 
 ## References
 
-[1] Chen, Z., Song, Y., Chang, T.H., Wan, X., 2020. Generating radiology reports via memory-driven transformer, in: EMNLP, pp. 1439–1449. 
+[1] Nicolson, A., Dowling, J., & Koopman, B. (2023). Improving chest X-ray report generation by leveraging warm starting. Artificial Intelligence in Medicine, 144, 102633. 
 
 [2] Chen, Z., Shen, Y., Song, Y., Wan, X., 2021. Cross-modal memory networks for radiology report generation, in: ACL, pp. 5904–5914. 
 
