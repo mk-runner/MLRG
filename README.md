@@ -56,7 +56,9 @@ def compute_performance_using_generated_reports():
 ```
 
 ## Reproducibility on MIMIC-CXR
+
 ---
+
 1. Download checkpoints for evaluation or initialization.
 - For CE metrics calculation: `chexbert.pth`, `radgraph`, and `bert-base-uncased`.
 - For model initialization: `microsoft/rad-dino` (image encoder), `microsoft/BiomedVLP-CXR-BERT-specialized` (text encoder), `distilbert/distilgpt2` (define text generator), and `cvt2distilgpt2` (initialize text generator).
@@ -74,7 +76,9 @@ def compute_performance_using_generated_reports():
 | distilbert/distilgpt2              | distilgpt2\_path    | [huggingface](https://huggingface.co/distilbert/distilgpt2)                |
 | cvt2distilgpt2              | cvt2distilgpt2\_path    | [github](https://github.com/aehrc/cvt2distilgpt2)                |
 </div>
+
 ---
+
 2. Conducting Stages 1 and 2
 ```
 # Stage 1: Multi-view Longitudinal Contrastive Learning
@@ -84,6 +88,8 @@ bash run_cxr_pt_v0906_fs.sh
 cd script/MIMIC-CXR
 bash run_cxr_ft_mlrg_v1011.sh
 ```
+
+---
 
 ## Citations
 
