@@ -37,28 +37,60 @@ files/
 - The radiology reports for MIMIC-CXR, MIMIC-ABN, and Two-view CXR are available on [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), [NIH](https://openi.nlm.nih.gov/faq#collection), and [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR), respectively. To streamline usage, we have structured multi-view longitudinal data using the `study_id`. The processed data can be accessed on [huggingface 🤗](https://huggingface.co/MK-runner/MLRG) (PhysioNet authorization required).
 
 ## Evaluation using generated radiology reports
+```
+def compute_performance_using_generated_reports():
+    from tools.metrics.metrics import compute_all_scores, compute_chexbert_details_scores
+    mimic_cxr_generated_path = 'generated-radiology-reports/MIMIC-CXR/test_reports_epoch-1_20-10-2024_16-28-28.csv'
+    mimic_abn_generated_path = 'generated-radiology-reports/MIMIC-ABN/test_reports_epoch-1_23-10-2024_10-25-20.csv'
+    twoview_cxr_generated_path = 'generated-radiology-reports/Two-view CXR/test_reports_epoch-0_25-10-2024_11-38-35.csv'
+    args = {
+        'chexbert_path': "/home/miao/data/dataset/checkpoints/chexbert.pth",
+        'bert_path': "/home/miao/data/dataset/checkpoints/bert-base-uncased",
+        'radgraph_path': "/home/miao/data/dataset/checkpoints/radgraph",
+    }
+    for generated_path in [mimic_cxr_generated_path, mimic_abn_generated_path, twoview_cxr_generated_path]:
+        data = pd.read_csv(generated_path)
+        gts, gens = data['labels'].tolist(), data['report'].tolist()
+        scores = compute_all_scores(gts, gens, args)
+        print(scores)
+```
 
-
-3. Download checkpoints below. Notably, the `chexbert.pth`, `radgraph`, and `bert-base-uncased` are used to calculate CE metrics, and `bert-base-uncased` and `scibert_scivocab_uncased ` are pre-trained models for cross-modal fusion network and text encoder. Then put these checkpoints in the same local dir (e.g., "/home/data/checkpoints"), and configure the `--ckpt_zoo_dir /home/data/checkpoints` argument in `script/**/**.sh`
+## Reproducibility on MIMIC-CXR
+---
+1. Download checkpoints for evaluation or initialization.
+- For CE metrics calculation: `chexbert.pth`, `radgraph`, and `bert-base-uncased`.
+- For model initialization: `microsoft/rad-dino` (image encoder), `microsoft/BiomedVLP-CXR-BERT-specialized` (text encoder), `distilbert/distilgpt2` (define text generator), and `cvt2distilgpt2` (initialize text generator).
+- Checkpoint directory: Place all checkpoints in a local directory (e.g., "/home/data/checkpoints"), and configure the `--ckpt_zoo_dir /home/data/checkpoints` argument in the corresponding `script/**/**.sh` file.
 
 <div style="margin: 0 auto; width: fit-content;">
       
 | **Chekpoint**                    | **Variable\_name** | **Download**                                                                          |
 | :------------------------------- | :----------------- | :------------------------------------------------------------------------------------ |
-| chexbert.pth                     | chexbert\_path     | [here](https://stanfordmedicine.app.box.com/s/c3stck6w6dol3h36grdc97xoydzxd7w9)       |
+| chexbert.pth                     | chexbert\_path     | [stanfordmedicine](https://stanfordmedicine.app.box.com/s/c3stck6w6dol3h36grdc97xoydzxd7w9)       |
 | bert-base-uncased                | bert\_path         | [huggingface](https://huggingface.co/google-bert/bert-base-uncased)                   |
 | radgraph                         | radgraph\_path     | [PhysioNet](https://physionet.org/content/radgraph/1\.0.0/)                           |
-| scibert\_scivocab\_uncased       | scibert\_path      | [huggingface](https://huggingface.co/allenai/scibertsscivocabuuncased)                |
-
+| microsoft/rad-dino               | rad\_dino\_path    | [huggingface](https://huggingface.co/microsoft/rad-dino)                |
+| microsoft/BiomedVLP-CXR-BERT-specialized               | cxr\_bert\_path    | [huggingface](https://huggingface.co/microsoft/BiomedVLP-CXR-BERT-specialized)              |
+| distilbert/distilgpt2              | distilgpt2\_path    | [huggingface](https://huggingface.co/distilbert/distilgpt2)                |
+| cvt2distilgpt2              | cvt2distilgpt2\_path    | [github](https://github.com/aehrc/cvt2distilgpt2)                |
 </div>
-
+---
+2. Conducting Stages 1 and 2
+```
+# Stage 1: Multi-view Longitudinal Contrastive Learning
+cd script/MIMIC-CXR
+bash run_cxr_pt_v0906_fs.sh
+# Stage 2: Chest X-ray Report Generation based on Patient-specific Prior Knowledge
+cd script/MIMIC-CXR
+bash run_cxr_ft_mlrg_v1011.sh
+```
 
 ## Citations
 
 If you use or extend our work, please cite our paper at CVPR 2025.
 
 ```
-@misc{liu2025enhancedcontrastivelearningmultiview,
+@misc{liu2025-mlrg,
       title={Enhanced Contrastive Learning with Multi-view Longitudinal Data for Chest X-ray Report Generation}, 
       author={Kang Liu and Zhuoqi Ma and Xiaolu Kang and Yunan Li and Kun Xie and Zhicheng Jiao and Qiguang Miao},
       year={2025},
@@ -71,14 +103,8 @@ If you use or extend our work, please cite our paper at CVPR 2025.
 
 
 ## Acknowledgement
-
 - [cvt2distilgpt2](https://github.com/aehrc/cvt2distilgpt2) Some codes are adapted based on R2Gen.
 
 ## References
-
 [1] Nicolson, A., Dowling, J., & Koopman, B. (2023). Improving chest X-ray report generation by leveraging warm starting. Artificial Intelligence in Medicine, 144, 102633. 
-
-[2] Chen, Z., Shen, Y., Song, Y., Wan, X., 2021. Cross-modal memory networks for radiology report generation, in: ACL, pp. 5904–5914. 
-
-[3] Wang, F., Zhou, Y., Wang, S., Vardhanabhuti, V., Yu, L., 2022. Multigranularity cross-modal alignment for generalized medical visual representation learning, in: NeurIPS, pp. 33536–33549.
 
