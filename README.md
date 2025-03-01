@@ -3,6 +3,7 @@
 
 # News
 -  **2025-03-01** Upload the code, checkpoints, and the [generated radiology reports](generated-radiology-reports) for the MIMIC-CXR, MIMIC-ABN, and Two-view CXR datasets. Notably, in the **generated-radiology-reports**, the **labels** column corresponds to **reference reports**, while the **report** column represents **generated reports**.
+-  **2025-02-28** Release [arXiv Version](https://arxiv.org/abs/2502.20056).
 
 ## Requirements
 
