@@ -1,0 +1,73 @@
+task:	test
+data_name:	mimic_abn
+ann_path:	/home/20031211471/Code/Code/Data/mlrg_mimic_abn_annotation_v1.1.json
+view_position_embed:	/home/20031211471/Code/Code/Data/five_work_mimic_cxr_view_position2idx.json
+images_dir:	/home/20031211471/Data/MIMIC-CXR/files/
+max_length:	100
+num_workers:	8
+is_save_checkpoint:	True
+online_checkpoint:	False
+is_multiview_learning:	True
+is_prior_scan:	True
+using_mpc_loss:	True
+using_local_loss:	False
+is_prior_report:	True
+is_indication:	True
+wandb:	False
+ckpt_zoo_dir:	/home/20031211471/Data/checkpoints/
+report_style:	factual_serialization
+text_encoder_num_layers:	6
+cross_modal_fusion_num_layers:	1
+multiview_fusion_num_layers:	3
+num_heads:	8
+pt_lr:	1e-06
+ft_lr:	1e-05
+temp:	0.5
+monitor_metric:	RCB
+epochs:	50
+batch_size:	8
+hidden_size:	768
+resume:	None
+load:	None
+test_ckpt_path:	/home/20031211471/Code/Code/five_gpt2/script/results/mimic_abn/finetune/v1020-MLRG-abn_2024_10_21_16/checkpoint/best_model.ckpt
+version:	v1020-MLRG-abn
+chexbert_path:	/home/20031211471/Data/checkpoints/chexbert.pth
+bert_path:	/home/20031211471/Data/checkpoints/bert-base-uncased
+rad_dino_path:	/home/20031211471/Data/checkpoints/microsoft/rad-dino
+radgraph_path:	/home/20031211471/Data/checkpoints/radgraph
+cxr_bert_path:	/home/20031211471/Data/checkpoints/microsoft/BiomedVLP-CXR-BERT-specialized
+distilgpt2_path:	/home/20031211471/Data/checkpoints/distilbert/distilgpt2
+cvt2distilgpt2_path:	/home/20031211471/Data/checkpoints/mimic_cxr_jpg_chen/cvt_21_to_gpt2/epoch=8-val_chen_cider=0.425092.ckpt
+seed:	9233
+num_gpus:	1
+num_beams:	3
+save_period:	1
+exp_dir_trial:	results/mimic_abn/test/v1020-MLRG-abn_2024_10_23_10
+print_step:	500
+device:	cuda
+monitor_mode:	max
+checkpoint_dir:	results/mimic_abn/test/v1020-MLRG-abn_2024_10_23_10/checkpoint
+time:	2024_10_23_10
+
+No. of test examples: 844.
+Testing step 0/106
+Testing step 105/106
+###############################################################
+test is over, current metrics:F1-Radgraph-partial: 0.22065842009224135
+chexbert_5_micro_f1: 0.5745375408052231
+chexbert_5_macro_f1: 0.5305477134773622
+chexbert_all_micro_f1: 0.5150346954510409
+chexbert_all_macro_f1: 0.3634631351870201
+chexbert_accuracy: 0.36611374407582936
+chen_bleu_1: 0.332941485284305
+chen_bleu_2: 0.19939151243813014
+chen_bleu_3: 0.1342449673162019
+chen_bleu_4: 0.09640813325920791
+chen_meteor: 0.13686042310440802
+chen_rouge: 0.2517498610422844
+chen_cider: 0.23894714779634582
+chen_num_examples: 844
+RB: 0.3170665533514493
+RC: 0.7356931155432822
+RCB: 0.8321012488024901 
+

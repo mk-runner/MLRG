@@ -1,0 +1,74 @@
+task:	test
+data_name:	mimic_cxr
+ann_path:	/home/20031211471/Code/Code/Data/five_work_mimic_cxr_annotation_v1.1.json
+view_position_embed:	/home/20031211471/Code/Code/Data/five_work_mimic_cxr_view_position2idx.json
+images_dir:	/home/20031211471/Data/MIMIC-CXR/files/
+max_length:	100
+num_workers:	8
+is_save_checkpoint:	True
+online_checkpoint:	False
+is_multiview_learning:	True
+is_prior_scan:	True
+using_mpc_loss:	True
+using_local_loss:	False
+is_prior_report:	True
+is_indication:	True
+wandb:	False
+ckpt_zoo_dir:	/home/20031211471/Data/checkpoints/
+report_style:	factual_serialization
+text_encoder_num_layers:	6
+cross_modal_fusion_num_layers:	1
+multiview_fusion_num_layers:	3
+num_heads:	8
+pt_lr:	5e-06
+ft_lr:	5e-05
+temp:	0.5
+monitor_metric:	RCB
+epochs:	50
+batch_size:	6
+hidden_size:	768
+resume:	None
+load:	None
+test_ckpt_path:	/home/20031211471/Code/Code/five_gpt2/script/results/mimic_cxr/finetune/v1011-MLRG-ft-RCB_2024_10_12_14/checkpoint/best_model.ckpt
+version:	v1011-MLRG-ft-RCB
+chexbert_path:	/home/20031211471/Data/checkpoints/chexbert.pth
+bert_path:	/home/20031211471/Data/checkpoints/bert-base-uncased
+rad_dino_path:	/home/20031211471/Data/checkpoints/microsoft/rad-dino
+radgraph_path:	/home/20031211471/Data/checkpoints/radgraph
+cxr_bert_path:	/home/20031211471/Data/checkpoints/microsoft/BiomedVLP-CXR-BERT-specialized
+distilgpt2_path:	/home/20031211471/Data/checkpoints/distilbert/distilgpt2
+cvt2distilgpt2_path:	/home/20031211471/Data/checkpoints/mimic_cxr_jpg_chen/cvt_21_to_gpt2/epoch=8-val_chen_cider=0.425092.ckpt
+seed:	9233
+num_gpus:	1
+num_beams:	3
+save_period:	1
+exp_dir_trial:	results/mimic_cxr/test/v1011-MLRG-ft-RCB_2024_10_20_14
+print_step:	500
+device:	cuda
+monitor_mode:	max
+checkpoint_dir:	results/mimic_cxr/test/v1011-MLRG-ft-RCB_2024_10_20_14/checkpoint
+time:	2024_10_20_14
+
+No. of test examples: 3852.
+Testing step 0/642
+Testing step 500/642
+Testing step 641/642
+###############################################################
+test is over, current metrics:F1-Radgraph-partial: 0.29074779642289006
+chexbert_5_micro_f1: 0.5503549017590784
+chexbert_5_macro_f1: 0.4862237881570195
+chexbert_all_micro_f1: 0.5050189837208092
+chexbert_all_macro_f1: 0.3641635446370755
+chexbert_accuracy: 0.31022845275181726
+chen_bleu_1: 0.41114996799739173
+chen_bleu_2: 0.2769778918508422
+chen_bleu_3: 0.20362264525354418
+chen_bleu_4: 0.1582088781713785
+chen_meteor: 0.17633810974007486
+chen_rouge: 0.3195399064699496
+chen_cider: 0.3599887171235285
+chen_num_examples: 3852
+RB: 0.4489566745942686
+RC: 0.7957667801436993
+RCB: 0.9539756583150778 
+
