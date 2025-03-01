@@ -111,7 +111,9 @@ If you use or extend our work, please cite our paper at CVPR 2025.
 
 ## Acknowledgement
 - [cvt2distilgpt2](https://github.com/aehrc/cvt2distilgpt2) Some codes are adapted based on R2Gen.
+- [MCL](https://github.com/mk-runner/MCL) Some codes are adapted based on MCL.
 
 ## References
 [1] Nicolson, A., Dowling, J., & Koopman, B. (2023). Improving chest X-ray report generation by leveraging warm starting. Artificial Intelligence in Medicine, 144, 102633. 
 
+[2] Liu, K., Ma, Z., Xie, K., Jiao, Z., & Miao, Q. (2024). MCL: Multi-view Enhanced Contrastive Learning for Chest X-ray Report Generation. arXiv preprint arXiv:2411.10224.
