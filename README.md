@@ -20,12 +20,17 @@ Automated radiology report generation offers an effective solution to alleviate 
 - Checkpoints (pretrain and finetune) and logs for the MIMIC-CXR dataset are available at [Baidu Netdisk](https://pan.baidu.com/s/1Rnwc1ZKhcieBjHoXpHTnlw?pwd=MK13) and [huggingface 🤗](https://huggingface.co/MK-runner/MLRG).
 
 ## Datasets
-
-- Medical images from the MIMIC-CXR, MIMIC-ABN, and Two-view CXR datasets are available for download from [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/) and [NIH](https://openi.nlm.nih.gov/faq#collection), with NIH data used exclusively in the Two-view CXR dataset. The file structure for storing these images is as follows:  
-
+### Medical Images 
+- MIMIC-CXR and MIMIC-ABN are publicly accessible through [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), with data systematically organized under root directories labeled `p10` through `p19`, maintaining consistency with MIMIC-CXR's default configuration. 
+- Two-View CXR dataset are publicly available at [NIH](https://openi.nlm.nih.gov/faq#collection), in addition to the MIMIC-CXR images. These supplementary files should be stored within the `NLMCXR_png` root directory. 
+- The comprehensive file architecture for all datasets is structured as delineated below:
 ```
 files/
 ├── p10
+    └── p10000032
+            └── s50414267
+               ├── 02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.jpg
+               └── 174413ec-4ec4c1f7-34ea26b7-c5f994f8-79ef1962.jpg
 ├── p11
 ├── p12
 ├── p13
@@ -36,8 +41,15 @@ files/
 ├── p18
 ├── p19
 └── NLMCXR_png
+   ├── CXR1_1_IM-0001-3001.png
+   ├── CXR1_1_IM-0001-4001.png
+   └── CXR2_IM-0652-1001.png
 ```
-- The radiology reports for MIMIC-CXR, MIMIC-ABN, and Two-view CXR are available on [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), [NIH](https://openi.nlm.nih.gov/faq#collection), and [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR), respectively. To streamline usage, we have structured multi-view longitudinal data using the `study_id`. The processed data can be accessed on [huggingface 🤗](https://huggingface.co/MK-runner/MLRG) (PhysioNet authorization required).
+### Raw Radiology Reports
+- MIMIC-CXR and MIMIC-ABN: [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/).
+- Two-view CXR: [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR)
+### Reorganization of Raw Radiology Reports
+- To streamline usage, we have structured multi-view longitudinal data using the `study_id`. The processed data can be accessed on [huggingface 🤗](https://huggingface.co/MK-runner/MLRG/tree/main/radiology%20report) (PhysioNet authorization required). Notably, due to the absence of `study_id` in the `NLMCXR_png` (i.e., IU X-ray dataset), IU X-ray dataset does not include previous visit data.
 
 ## Evaluation using generated radiology reports
 ```
