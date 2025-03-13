@@ -21,8 +21,9 @@ Automated radiology report generation offers an effective solution to alleviate 
 
 ## Datasets
 ### Medical Images 
-- MIMIC-CXR and MIMIC-ABN are publicly accessible through [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), with data systematically organized under root directories labeled `p10` through `p19`, maintaining consistency with MIMIC-CXR's default configuration. 
-- Two-View CXR dataset are publicly available at [NIH](https://openi.nlm.nih.gov/faq#collection), in addition to the MIMIC-CXR images. These supplementary files should be stored within the `NLMCXR_png` root directory. 
+- MIMIC-CXR and MIMIC-ABN are publicly accessible through [PhysioNet](https://physionet.org/content/mimic-cxr/2.0.0/), with data systematically organized under root directories labeled `p10` through `p19`, maintaining consistency with MIMIC-CXR's default configuration.
+- IU X-ray dataset is publicly available at [NIH](https://openi.nlm.nih.gov/faq#collection), and its root directory is the `NLMCXR_png`.
+- Two-View CXR dataset: the `NLMCXR_png` + MIMIC-CXR images. Two-view CXR aggregates studies with two views from MIMIC-CXR [1] and IU X-ray [2]. For more details, please refer to [arXiv](https://arxiv.org/abs/2411.10224).
 - The comprehensive file architecture for all datasets is structured as delineated below:
 ```
 files/
