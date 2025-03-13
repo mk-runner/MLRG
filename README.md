@@ -75,7 +75,7 @@ def compute_performance_using_generated_reports():
 
 ---
 
-1. Download checkpoints for evaluation or initialization.
+**1. Download checkpoints for evaluation or initialization.**
 - For CE metrics calculation: `chexbert.pth`, `radgraph`, and `bert-base-uncased`.
 - For model initialization: `microsoft/rad-dino` (image encoder), `microsoft/BiomedVLP-CXR-BERT-specialized` (text encoder), `distilbert/distilgpt2` (define text generator), and `cvt2distilgpt2` (initialize text generator).
 - Checkpoint directory: Place all checkpoints in a local directory (e.g., "/home/data/checkpoints"), and configure the `--ckpt_zoo_dir /home/data/checkpoints` argument in the corresponding `script/**/**.sh` file.
@@ -95,7 +95,7 @@ def compute_performance_using_generated_reports():
 
 ---
 
-2. Conducting Stages 1 and 2
+**2. Conducting Stages 1 and 2**
 ```
 # Stage 1: Multi-view Longitudinal Contrastive Learning
 cd script/MIMIC-CXR
