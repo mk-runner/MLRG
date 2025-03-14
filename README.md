@@ -50,10 +50,10 @@ files/
 - Two-view CXR: [huggingface 🤗](https://huggingface.co/datasets/MK-runner/Multi-view-CXR).
 ### Reorganization of Raw Radiology Reports
 -  To simplify usage, we have organized multi-view longitudinal data using the `study_id`. The processed datasets—MIMIC-CXR, MIMIC-ABN, and Two-view CXR—are available on [Hugging Face 🤗](https://huggingface.co/MK-runner/MLRG/tree/main/radiology%20report) (PhysioNet authorization required). Note that the IU X-ray dataset (`NLMCXR_png`) does not include previous visit data due to the absence of `study_id`.
-- [MIMIC-CXR](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/five_work_mimic_cxr_annotation_v1.1.json)
-- [MIMIC-ABN](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/mlrg_mimic_abn_annotation_v1.1.json)
-- [Two-view CXR](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/mlrg_multiview_cxr_annotation_v1.1.json)
-- [View Position for all datasets](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/five_work_mimic_cxr_view_position_v1.1.json)
+- MIMIC-CXR: [five_work_mimic_cxr_annotation_v1.1.json](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/five_work_mimic_cxr_annotation_v1.1.json)
+- MIMIC-ABN: [mlrg_mimic_abn_annotation_v1.1.json](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/mlrg_mimic_abn_annotation_v1.1.json)
+- Two-view CXR: [mlrg_multiview_cxr_annotation_v1.1.json](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/mlrg_multiview_cxr_annotation_v1.1.json)
+- View Position for all datasets: [five_work_mimic_cxr_view_position_v1.1.json](https://huggingface.co/MK-runner/MLRG/blob/main/radiology%20report/five_work_mimic_cxr_view_position_v1.1.json)
 
 
 ## Evaluation using generated radiology reports
