@@ -4,6 +4,7 @@ Automated radiology report generation offers an effective solution to alleviate 
 <div align=center><img src="generated-radiology-reports/fig2.png"></div>
 
 ## News
+-  **2025-03-16** Release checkpoints for [MIMIC-ABN](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-abn) and [Two-view CXR](https://huggingface.co/MK-runner/MLRG/blob/main/two-view%20cxr/best_model.ckpt).
 -  **2025-03-01** Upload the code, checkpoints, and the [generated radiology reports](generated-radiology-reports) for the MIMIC-CXR, MIMIC-ABN, and Two-view CXR datasets. Notably, in the **generated-radiology-reports**, the **labels** column corresponds to **reference reports**, while the **report** column represents **generated reports**.
 -  **2025-02-28** Release [![arXiv](https://img.shields.io/badge/arXiv-2502.20056-b31b1b.svg)](https://arxiv.org/abs/2502.20056).
 
@@ -17,6 +18,8 @@ Automated radiology report generation offers an effective solution to alleviate 
 
 ## Checkpoints
 - Checkpoints (pretrain and finetune) and logs for the MIMIC-CXR dataset are available at [Baidu Netdisk](https://pan.baidu.com/s/1Rnwc1ZKhcieBjHoXpHTnlw?pwd=MK13) and [huggingface 🤗](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-cxr).
+- [MIMIC-ABN](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-abn)
+- [Two-view CXR](https://huggingface.co/MK-runner/MLRG/blob/main/two-view%20cxr/best_model.ckpt)
 
 ## Datasets
 ### Medical Images 
