@@ -15,6 +15,7 @@ Automated radiology report generation offers an effective solution to alleviate 
 - `transformers==4.23.1`
 - `torchvision==0.16.2+cu118`
 - `radgraph==0.09`
+- `python==3.9.0`
 - please refer to `requirements.txt` for more details.
 
 ## Checkpoints
