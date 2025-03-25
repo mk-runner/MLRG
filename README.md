@@ -11,9 +11,9 @@ Automated radiology report generation offers an effective solution to alleviate 
 
 ## Requirements
 
-- `torch==2.1.2+cu118`
-- `transformers==4.23.1`
-- `torchvision==0.16.2+cu118`
+- `torch==2.3.1+cu118`
+- `transformers==4.43.3`
+- `torchvision==0.18.1+cu118`
 - `radgraph==0.09`
 - `python==3.9.0`
 - please refer to `requirements.txt` for more details.
