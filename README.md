@@ -17,6 +17,7 @@ Automated radiology report generation offers an effective solution to alleviate 
 - `radgraph==0.09`
 - `python==3.9.0`
 - please refer to `requirements.txt` for more details.
+- `pip install -r requirements.txt`
 
 ## Checkpoints
 - Checkpoints (pretrain and finetune) and logs for the MIMIC-CXR dataset are available at [Baidu Netdisk](https://pan.baidu.com/s/1Rnwc1ZKhcieBjHoXpHTnlw?pwd=MK13) and [huggingface 🤗](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-cxr).
