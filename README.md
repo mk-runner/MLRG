@@ -12,12 +12,19 @@ Automated radiology report generation offers an effective solution to alleviate 
 ## Requirements
 
 - `torch==2.3.1+cu118`
-- `transformers==4.43.3`
+- **`transformers==4.43.3`**
 - `torchvision==0.18.1+cu118`
 - `radgraph==0.09`
 - `python==3.9.0`
 - please refer to `requirements.txt` for more details.
-- `pip install -r requirements.txt`
+- As stated in [Issue4](https://github.com/mk-runner/MLRG/issues/4), **the `transformers` version should be maintained to prevent potential problems.** Credit goes to [@Andy](https://github.com/andypinxinliu) for this clarification.
+- Set up the same virtual environment as ours：
+```
+% create virtual environment
+conda create -n mlrg python=3.9.0
+% install packages
+pip install -r requirements.txt
+```
 
 ## Checkpoints
 - Checkpoints (pretrain and finetune) and logs for the MIMIC-CXR dataset are available at [Baidu Netdisk](https://pan.baidu.com/s/1Rnwc1ZKhcieBjHoXpHTnlw?pwd=MK13) and [huggingface 🤗](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-cxr).
