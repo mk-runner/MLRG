@@ -17,7 +17,7 @@ Automated radiology report generation offers an effective solution to alleviate 
 - `radgraph==0.09`
 - `python==3.9.0`
 - please refer to `requirements.txt` for more details.
-- As stated in [Issue4](https://github.com/mk-runner/MLRG/issues/4), **the `transformers` version should be maintained to prevent potential problems.** Credit goes to [@Andy](https://github.com/andypinxinliu) for this clarification.
+- As stated in [Issue #4](https://github.com/mk-runner/MLRG/issues/4), **the `transformers` version should be maintained to prevent potential problems.** Credit goes to [@Andy](https://github.com/andypinxinliu) for this clarification.
 - Set up the same virtual environment as ours：
 ```
 % create virtual environment
