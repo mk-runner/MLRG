@@ -12,7 +12,6 @@ python ../main_v0926_ablation_study.py \
 --is_multiview_learning "yes" \
 --is_prior_scan "yes" \
 --using_mpc_loss "no" \
---report_style "factual_serialization" \
 --is_indication "yes" \
 --is_prior_report "yes" \
 --ckpt_zoo_dir "/home/20031211471/Data/checkpoints/" \
