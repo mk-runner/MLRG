@@ -4,6 +4,7 @@ Automated radiology report generation offers an effective solution to alleviate 
 <div align=center><img src="generated-radiology-reports/fig2.png"></div>
 
 ## News
+-  **2025-05-09** Upload [poster](https://github.com/mk-runner/MLRG/tree/main/generated-radiology-reports/mlrg-poster.pdf)]
 -  **2025-03-16** Release checkpoints for [MIMIC-ABN](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-abn) and [Two-view CXR](https://huggingface.co/MK-runner/MLRG/blob/main/two-view%20cxr/best_model.ckpt).
 -  **2025-03-01** Upload official code and checkpoints for [MIMIC-CXR](https://huggingface.co/MK-runner/MLRG/tree/main/mimic-cxr).
 -  **2025-03-01** Release [generated-radiology-reports](https://github.com/mk-runner/MLRG/tree/main/generated-radiology-reports), the **labels** column corresponds to **reference reports**, while the **report** column represents **generated reports**.
