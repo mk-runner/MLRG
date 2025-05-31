@@ -38,7 +38,7 @@ class Pretrain(pl.LightningModule):
         self.train_set = None
         self.val_set = None
         self.test_set = None
-        self.prefetch_factor = 5
+        self.prefetch_factor = 4
         self.val_min_losses = {
             "epoch": -1,
             "mpc_loss": 1000,
