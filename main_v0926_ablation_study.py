@@ -75,7 +75,7 @@ def main():
         gradient_clip_val=0.1,
         benchmark=False,
         callbacks=callbacks,
-        check_val_every_n_epoch=0,
+        check_val_every_n_epoch=None,
         strategy="ddp_find_unused_parameters_true",
         devices=args["num_gpus"],
         precision="bf16-mixed",
