@@ -133,7 +133,7 @@ If you use or extend our work, please cite our paper at CVPR 2025.
 @InProceedings{Liu_2025_CVPR,
     author    = {Liu, Kang and Ma, Zhuoqi and Kang, Xiaolu and Li, Yunan and Xie, Kun and Jiao, Zhicheng and Miao, Qiguang},
     title     = {Enhanced Contrastive Learning with Multi-view Longitudinal Data for Chest X-ray Report Generation},
-    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2025},
     pages     = {10348-10359}
