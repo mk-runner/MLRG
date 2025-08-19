@@ -5,6 +5,7 @@
 [![CVPR 2025](https://img.shields.io/badge/CVPR-2025-blue.svg)](https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Enhanced_Contrastive_Learning_with_Multi-view_Longitudinal_Data_for_Chest_X-ray_CVPR_2025_paper.html)&nbsp;&nbsp;&nbsp;
 [![arXiv](https://img.shields.io/badge/arXiv-2502.20056-b31b1b.svg)](https://arxiv.org/abs/2502.20056)&nbsp;&nbsp;&nbsp;
 [![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-yellow)](https://huggingface.co/MK-runner/MLRG)
+[![BibTeX](https://img.shields.io/badge/%F0%9F%93%96-BibTeX-yellow)](#citation)
 
 <div align="center">
   <img src="generated-radiology-reports/fig2.png" alt="Framework" width="75%">
