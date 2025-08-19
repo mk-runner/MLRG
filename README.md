@@ -6,6 +6,10 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2502.20056-b31b1b.svg)](https://arxiv.org/abs/2502.20056)&nbsp;&nbsp;&nbsp;
 [![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-yellow)](https://huggingface.co/MK-runner/MLRG)&nbsp;&nbsp;&nbsp;
 [![BibTeX](https://img.shields.io/badge/%F0%9F%93%96-BibTeX-yellow)](#Citation)
+[![BibTeX](https://img.shields.io/badge/%F0%9F%93%96-BibTeX-yellow)](#-citation)
+[![BibTeX](https://img.shields.io/badge/%F0%9F%93%96-BibTeX-yellow)](#-Citation)
+
+
 
 <div align="center">
   <img src="generated-radiology-reports/fig2.png" alt="Framework" width="75%">
