@@ -126,7 +126,7 @@ def compute_performance_using_generated_reports():
 
 | **Checkpoint**                             | **Variable name**     | **Download**                                                                                                                                                               |
 | ------------------------------------------ | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `chexbert.pth`                             | `chexbert_path`       | [StanfordMedicine](https://stanfordmedicine.app.box.com/s/c3stck6w6dol3h36grdc97xoydzxd7w9) • [HuggingFace](https://huggingface.co/MK-runner/RRG-metrics-pretrained-model) |
+| `chexbert.pth`                             | `chexbert_path`       | [StanfordMedicine](https://stanfordmedicine.app.box.com/s/c3stck6w6dol3h36grdc97xoydzxd7w9) or [HuggingFace](https://huggingface.co/MK-runner/RRG-metrics-pretrained-model) |
 | `bert-base-uncased`                        | `bert_path`           | [HuggingFace](https://huggingface.co/google-bert/bert-base-uncased)                                                                                                        |
 | `radgraph`                                 | `radgraph_path`       | [PhysioNet](https://physionet.org/content/radgraph/1.0.0/)                                                                                                                 |
 | `microsoft/rad-dino`                       | `rad_dino_path`       | [HuggingFace](https://huggingface.co/microsoft/rad-dino)                                                                                                                   |
